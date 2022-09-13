@@ -5,8 +5,7 @@ import portola from './portola-lineup.csv';
 import {parseData, extractProp} from './parseData';
 import Lineup from './Lineup';
 import Schedule from './Schedule';
-import bgGradientLeft from './images/homepage-gradient-hero-left.png';
-import bgGradientRight from './images/homepage-gradient-hero-right.png';
+import logo from './images/portola-logo.png';
 
 const festivals = [
   {
@@ -60,10 +59,6 @@ function App() {
 
   return (
     <div className="App">
-      <div className="background">
-        <img src={bgGradientLeft} id="bg1"/>
-        <img src={bgGradientRight} id="bg2" />
-      </div>
       <div className="content">
         <div className="nav-wrapper">
           <h4 
@@ -82,7 +77,7 @@ function App() {
           </h4>
         </div>
         <div className="day-header">
-          <h1>{festivals[festival].name} Scheduler</h1>
+          <img src={logo} />
         </div> 
         {page === 0 ?
           <Lineup festival={festival} stages={stages} data={data} mySchedule={mySchedule} editSchedule={editSchedule} />

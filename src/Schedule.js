@@ -153,7 +153,7 @@ function Gap(props) {
 					<div className={"gap-artists-wrapper" + (open ? ' open' : '')}>
 						{artists.map(act => <Act key={act.id} data={act} editSchedule={props.editSchedule} />)}
 					</div>
-					<a onClick={() => setOpen(!open)}>{open ? 'Collapse' : 'See All →'}</a>
+					<a class="collapse" onClick={() => setOpen(!open)}>{open ? '- collapse' : '+ see all'}</a>
 				</div>
 				:
 				<p>Try exploring the festival grounds or getting something to eat!</p>
@@ -168,8 +168,7 @@ function ScheduleItem(props) {
 			<p>{props.data.startTime} - {props.data.endTime}</p>
 			<h3>{props.data.name}</h3>
 			<div className="schedule-item-location">
-				<img src={pin} />
-				<h4>{props.data.stage}</h4>
+				<h4>{"@ " + props.data.stage}</h4>
 			</div>
 		</div>
 	);
@@ -186,10 +185,9 @@ function Act(props) {
 			<p>{props.data.startTime} - {props.data.endTime}</p>
 			<h3>{props.data.name}</h3>
 			<div className="act-location">
-				<img src={pin} />
-				<h4>{props.data.stage}</h4>
+				<h4>{"@ " + props.data.stage}</h4>
 			</div>
-			<a className="action">{props.context ? 'Remove' : 'Add'}</a>
+			<a className="action">{props.context ? '-' : '+'}</a>
 		</div>
 	);
 }

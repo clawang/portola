@@ -1,46 +1,4 @@
 @font-face {
-  font-family: 'Poppins';
-  src: url('./fonts/Poppins-Light.ttf');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Poppins';
-  src: url('./fonts/Poppins-SemiBold.ttf');
-  font-weight: bold;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Mont Heavy';
-  src: url('./fonts/Mont-HeavyDEMO.otf');
-  font-weight: bold;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Mont Bold';
-  src: url('./fonts/Fontfabric---Mont-Bold.otf');
-  font-weight: bold;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Mont';
-  src: url('./fonts/Fontfabric---Mont-Regular.otf');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Sonder';
-  src: url('./fonts/SonderRegular.otf');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
   font-family: portola-primary;
   src: url("https://aegwebprod.blob.core.windows.net/content/fonts/ABCMonumentGrotesk-Medium.otf");
 }
@@ -56,11 +14,13 @@ $body-font: 'portola-body', sans-serif;
 $header-font: 'portola-primary', sans-serif;
 $accent-font: 'Sonder', serif;
 $selection-color: rgba(158,222,219, 0.5);
-$body-color: #3a3a3a;
-$accent-color: #097a88;
+$body-color: #2d2e31;
+$accent-color: #f7b97e;
 $subtitle-color: #727078;
 $background-color: #f0f0f0;
 $portola-blue: #002fa7;
+$accent-blue-1: #a2aace;
+$accent-blue-2: #8ca5cf;
 
 html {
 	background: $background-color;
@@ -87,17 +47,19 @@ h2, h4 {
 p {
 	margin: 0.1em 0;
 	font-family: $body-font;
+	color: $portola-blue;
 }
 
 button {
 	padding: 12.5px 18px;
 	margin: 0 5px;
 	font-family: $body-font;
-	color: $body-color;
-	border: 2px solid $body-color;
+	color: $portola-blue;
+	border: 2px solid $portola-blue;
 	background: transparent;
 	font-weight: 800;
 	cursor: pointer;
+	text-transform: uppercase;
 }
 
 .background {
@@ -137,8 +99,12 @@ button {
 }
 
 .day-header {
-	margin: 50px 0 20px 0;
+	margin: 50px 0;
 	text-align: center;
+
+	img {
+		max-width: 400px;
+	}
 }
 
 .nav-wrapper {
@@ -146,45 +112,18 @@ button {
 	align-items: center;
 	justify-content: center;
 	margin: 30px 0 50px;
+	border-bottom: 1px solid $portola-blue;
+	padding-bottom: 25px;
 
 	h4 {
 		margin: 0 20px;
 		cursor: pointer;
 		position: relative;
+		letter-spacing: 1px;
 
-		&:before {
-			content: "";
-	    position: absolute;
-	    width: 100%;
-	    min-width: 85px;
-	    height: 10px;
-	    opacity: 0;
-	    bottom: -5px;
-	    left: 50%;
-	    -webkit-transform: translateX(-50%);
-	    transform: translateX(-50%);
-	    background-repeat: no-repeat;
-	    background-size: 100% 100%;
-	    z-index: -1;
-	    -webkit-clip-path: polygon(0 0,100% 0,0 50%,100% 100%,0 100%);
-	    clip-path: polygon(0 0,100% 0,0 50%,100% 100%,0 100%);
-	    -webkit-transition: all .5s ease;
-	    transition: all .5s ease;
+		&:hover {
+			color: $accent-color;
 		}
-
-		&:hover:before, &.selected:before  {
-	    opacity: 1;
-	    -webkit-clip-path: polygon(0 0,100% 0,100% 50%,100% 100%,0 100%);
-	    clip-path: polygon(0 0,100% 0,100% 50%,100% 100%,0 100%);
-		}
-	}
-
-	#lineup:before {
-	  background-image: url('./images/nav-underline-lineup.png');
-	}
-
-	#schedule:before {
-		background-image: url('./images/nav-underline-schedule.png');
 	}
 }
 
@@ -195,7 +134,7 @@ button {
 	margin: 0 0 50px;
 
 	button.selected {
-		background: $body-color;
+		background: $portola-blue;
 		color: white;
 	}
 }
@@ -216,20 +155,42 @@ button {
 		width: 200px;
 		flex-grow: 0;
 		flex-shrink: 0;
-	}
+		text-align: center;
 
-	.artist-wrapper {
-		border: 1px solid black;
-		padding: 10px;
-		margin: 10px 0;
-		cursor: pointer;
+		.artist-wrapper {
+			padding: 15px 10px;
+			margin: 10px 0;
+			cursor: pointer;
+			//background: $accent-blue-1;
+			text-align: center;
 
-		p {
-			font-size: 12px;
+			h3 {
+				color: $body-color;
+				text-transform: uppercase;
+			}
+
+			p {
+				font-size: 12px;
+				color: $body-color;
+			}
+
+			&.selected {
+				border: 2px solid $accent-color !important;
+			}
 		}
 
-		&.selected {
-			background: $selection-color;
+		&:nth-of-type(2n) {
+			.artist-wrapper {
+				background: $accent-blue-2;
+				border: 2px solid $accent-blue-2;
+			}
+		}
+
+		&:nth-of-type(2n+1) {
+			.artist-wrapper {
+				background: $accent-blue-1;
+				border: 2px solid $accent-blue-1;
+			}
 		}
 	}
 }
@@ -247,18 +208,24 @@ button {
 	}
 
 	.schedule-item-wrapper {
-		border: 1px solid black;
-		padding: 10px;
+		padding: 20px;
 		margin: 10px 0;
+		background: $portola-blue;
+
+		h4, h3, p {
+			color: white;
+		}
+
+		h3 {
+			text-transform: uppercase;
+		}
 
 		.schedule-item-location {
 			display: flex;
 			align-items:center;
 			color: $body-color;
-			
 
 			h4 {
-				font-family: 'Mont Bold';
 				font-weight: 200;
 			}
 		}
@@ -272,8 +239,7 @@ button {
 }
 
 .conflict-wrapper {
-	//border: 1px solid red;
-	background: $pink;
+	background: $accent-color;
 	padding: 20px;
 	margin: 10px 0;
 	position: relative;
@@ -295,12 +261,17 @@ button {
 		position: absolute;
 		right: 20px;
 		bottom: 30px;
+		transition: 0.3s;
+
+		&:hover {
+			background: $portola-blue;
+			color: white;
+		}
 	}
 }
 
 .gap-wrapper {
-	//border: 1px solid yellow;
-	background: $yellow;
+	border: 1px solid $portola-blue;
 	padding: 20px;
 	margin: 10px 0;
 	position: relative;
@@ -308,18 +279,24 @@ button {
 	.gap-artists-wrapper {
 		display: flex;
 		flex-wrap: wrap;
-		height: 110px;
+		max-height: 110px;
 		overflow: hidden;
 		margin-bottom: 10px;
+		transition: max-height 0.8s;
 
 		&.open {
-			height: auto !important;
+			max-height: 5000px;
 		}
 	}
 
 	a {
 		cursor: pointer;
-		text-decoration: underline;
+	}
+
+	.collapse {
+		font-size: 14px;
+		color: $portola-blue;
+		text-transform: uppercase;
 	}
 
 	.act-wrapper {
@@ -339,10 +316,18 @@ button {
 }
 
 .act-wrapper {
-	border: 1px solid black;
+	background: $portola-blue;
 	padding: 10px;
 	margin: 10px 5px;
 	position: relative;
+
+	h3, h4, p {
+		color: white;
+	}
+
+	h3 {
+		text-transform: uppercase;
+	}
 
 	.act-location {
 		display: flex;
@@ -350,7 +335,6 @@ button {
 		color: $body-color;
 		
 		h4 {
-			font-family: 'Mont Bold';
 			font-weight: 200;
 		}
 
@@ -363,10 +347,12 @@ button {
 
 	.action {
 		position: absolute;
-		right: 10px;
-		bottom: 10px;
-		text-decoration: underline;
-		font-size: 12px;
+		right: 5px;
+		bottom: 5px;
+		//text-decoration: underline;
+		font-size: 24px;
+		color: $accent-color;
+		padding: 5px;
 	}
 }
 
