@@ -1,0 +1,388 @@
+@font-face {
+  font-family: 'Poppins';
+  src: url('./fonts/Poppins-Light.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('./fonts/Poppins-SemiBold.ttf');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mont Heavy';
+  src: url('./fonts/Mont-HeavyDEMO.otf');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mont Bold';
+  src: url('./fonts/Fontfabric---Mont-Bold.otf');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mont';
+  src: url('./fonts/Fontfabric---Mont-Regular.otf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Sonder';
+  src: url('./fonts/SonderRegular.otf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: portola-primary;
+  src: url("https://aegwebprod.blob.core.windows.net/content/fonts/ABCMonumentGrotesk-Medium.otf");
+}
+@font-face {
+  font-family: portola-body;
+  src: url("https://aegwebprod.blob.core.windows.net/content/fonts/ABCMonumentGrotesk-Regular.otf");
+}
+
+$yellow: rgba(244, 214, 163, 0.3);
+$dark-yellow: #f4d6a3;
+$pink: rgba(249,200,194, 0.5);
+$body-font: 'portola-body', sans-serif;
+$header-font: 'portola-primary', sans-serif;
+$accent-font: 'Sonder', serif;
+$selection-color: rgba(158,222,219, 0.5);
+$body-color: #3a3a3a;
+$accent-color: #097a88;
+$subtitle-color: #727078;
+$background-color: #f0f0f0;
+$portola-blue: #002fa7;
+
+html {
+	background: $background-color;
+}
+
+h1 {
+	font-family: $accent-font;
+	font-weight: 100;
+	font-size: 5em;
+	//margin: 0.1em 0;
+	color: $body-color;
+}
+
+h2, h3, h4, {
+	margin: 0.1em 0;
+	font-family: $header-font;
+	color: $portola-blue;
+}
+
+h2, h4 {
+	text-transform: uppercase;
+}
+
+p {
+	margin: 0.1em 0;
+	font-family: $body-font;
+}
+
+button {
+	padding: 12.5px 18px;
+	margin: 0 5px;
+	font-family: $body-font;
+	color: $body-color;
+	border: 2px solid $body-color;
+	background: transparent;
+	font-weight: 800;
+	cursor: pointer;
+}
+
+.background {
+	width: 100%;
+	height: 100vh;
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+
+	img {
+		position: absolute;
+		display:none;
+	}
+
+	#bg1 {
+		top: 0;
+		left: 0;
+		z-index: 2;
+	}
+
+	#bg2 {
+		right: 0;
+		top: 0;
+	}
+}
+
+.content {
+	width: 100%;
+	height: 100vh;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 3;
+	overflow-y: scroll;
+}
+
+.day-header {
+	margin: 50px 0 20px 0;
+	text-align: center;
+}
+
+.nav-wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 30px 0 50px;
+
+	h4 {
+		margin: 0 20px;
+		cursor: pointer;
+		position: relative;
+
+		&:before {
+			content: "";
+	    position: absolute;
+	    width: 100%;
+	    min-width: 85px;
+	    height: 10px;
+	    opacity: 0;
+	    bottom: -5px;
+	    left: 50%;
+	    -webkit-transform: translateX(-50%);
+	    transform: translateX(-50%);
+	    background-repeat: no-repeat;
+	    background-size: 100% 100%;
+	    z-index: -1;
+	    -webkit-clip-path: polygon(0 0,100% 0,0 50%,100% 100%,0 100%);
+	    clip-path: polygon(0 0,100% 0,0 50%,100% 100%,0 100%);
+	    -webkit-transition: all .5s ease;
+	    transition: all .5s ease;
+		}
+
+		&:hover:before, &.selected:before  {
+	    opacity: 1;
+	    -webkit-clip-path: polygon(0 0,100% 0,100% 50%,100% 100%,0 100%);
+	    clip-path: polygon(0 0,100% 0,100% 50%,100% 100%,0 100%);
+		}
+	}
+
+	#lineup:before {
+	  background-image: url('./images/nav-underline-lineup.png');
+	}
+
+	#schedule:before {
+		background-image: url('./images/nav-underline-schedule.png');
+	}
+}
+
+.day-wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0 0 50px;
+
+	button.selected {
+		background: $body-color;
+		color: white;
+	}
+}
+
+.lineup-wrapper {
+	margin: 20px auto;
+	width: 100%;
+	max-width: 1200px;
+	overflow-x: scroll;
+
+	.lineup {
+		display: flex;
+		justify-content: center;
+	}
+
+	.stage-wrapper {
+		margin: 0 10px;
+		width: 200px;
+		flex-grow: 0;
+		flex-shrink: 0;
+	}
+
+	.artist-wrapper {
+		border: 1px solid black;
+		padding: 10px;
+		margin: 10px 0;
+		cursor: pointer;
+
+		p {
+			font-size: 12px;
+		}
+
+		&.selected {
+			background: $selection-color;
+		}
+	}
+}
+
+.schedule-wrapper {
+	width: 100%;
+	max-width: 800px;
+	margin: 20px auto;
+	padding: 20px;
+	box-sizing: border-box;
+
+	.schedule-day {
+		margin: 20px 0;
+		padding: 20px 0;
+	}
+
+	.schedule-item-wrapper {
+		border: 1px solid black;
+		padding: 10px;
+		margin: 10px 0;
+
+		.schedule-item-location {
+			display: flex;
+			align-items:center;
+			color: $body-color;
+			
+
+			h4 {
+				font-family: 'Mont Bold';
+				font-weight: 200;
+			}
+		}
+
+		img {
+			width: 12px;
+			height: 16px;
+			margin-right: 5px;
+		}
+	}
+}
+
+.conflict-wrapper {
+	//border: 1px solid red;
+	background: $pink;
+	padding: 20px;
+	margin: 10px 0;
+	position: relative;
+
+	.conflict-acts-wrapper {
+		display: flex;
+		align-items: center;
+
+		.act-wrapper {
+			width: 200px;
+
+			&:first-of-type {
+				margin-left: 0;
+			}
+		}
+	}
+
+	button {
+		position: absolute;
+		right: 20px;
+		bottom: 30px;
+	}
+}
+
+.gap-wrapper {
+	//border: 1px solid yellow;
+	background: $yellow;
+	padding: 20px;
+	margin: 10px 0;
+	position: relative;
+
+	.gap-artists-wrapper {
+		display: flex;
+		flex-wrap: wrap;
+		height: 110px;
+		overflow: hidden;
+		margin-bottom: 10px;
+
+		&.open {
+			height: auto !important;
+		}
+	}
+
+	a {
+		cursor: pointer;
+		text-decoration: underline;
+	}
+
+	.act-wrapper {
+		width: 200px;
+	}
+
+	#close {
+		position: absolute;
+		top: 20px;
+		right: 20px;
+		cursor: pointer;
+	}
+
+	&.hidden {
+		display: none;
+	}
+}
+
+.act-wrapper {
+	border: 1px solid black;
+	padding: 10px;
+	margin: 10px 5px;
+	position: relative;
+
+	.act-location {
+		display: flex;
+		align-items:center;
+		color: $body-color;
+		
+		h4 {
+			font-family: 'Mont Bold';
+			font-weight: 200;
+		}
+
+		img {
+			width: 12px;
+			height: 16px;
+			margin-right: 5px;
+		}
+	}
+
+	.action {
+		position: absolute;
+		right: 10px;
+		bottom: 10px;
+		text-decoration: underline;
+		font-size: 12px;
+	}
+}
+
+@media only screen and (max-width: 650px) {
+	.conflict-wrapper button {
+		position: relative;
+		right: auto;
+		bottom: auto;
+		margin-left: 0;
+	}
+
+	#bg2 {
+		display: none;
+	}
+
+	.act-wrapper {
+		padding-bottom: 20px;
+	}
+}
