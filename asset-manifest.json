@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/portola/static/css/main.86a7db49.css",
+    "main.js": "/portola/static/js/main.11879517.js",
+    "static/js/787.b3919a7e.chunk.js": "/portola/static/js/787.b3919a7e.chunk.js",
+    "static/media/portola-logo.png": "/portola/static/media/portola-logo.1674668d0e7b4129abfe.png",
+    "static/media/pin.png": "/portola/static/media/pin.2e67d969a9ad413dcfda.png",
+    "static/media/lineup.csv": "/portola/static/media/lineup.910fffebb41fd26171fb.csv",
+    "static/media/portola-lineup.csv": "/portola/static/media/portola-lineup.af2fa170c5e20e07e696.csv",
+    "index.html": "/portola/index.html",
+    "main.86a7db49.css.map": "/portola/static/css/main.86a7db49.css.map",
+    "main.11879517.js.map": "/portola/static/js/main.11879517.js.map",
+    "787.b3919a7e.chunk.js.map": "/portola/static/js/787.b3919a7e.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.86a7db49.css",
+    "static/js/main.11879517.js"
+  ]
+}
